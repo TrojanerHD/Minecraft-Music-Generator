@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Minecraft Music Generator</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet"/>
+</head>
+<body>
+<input directory id="directory-selection" type="file" webkitdirectory/>
+<button id="save-directory">Save directory</button>
+<br/>
+Speed (BPM)<br/>
+<button id="previous-speed">-</button>
+<label>
+    <input id="speed" type="number" value="70"/>
+</label>
+<button id="next-speed">+</button>
+<br/>
+<table id="save-system">
+    <tbody>
+    <tr>
+        <td>Save manually</td>
+        <td>
+            <!-- Rounded switch -->
+            <label class="switch">
+                <input checked id="auto-save" type="checkbox">
+                <span class="slider round"></span>
+            </label>
+        </td>
+        <td>Save automatically</td>
+        <td>
+            <button id="save">Save</button>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<label>
+    Time Signature<br/>
+    <input id="time-signature" type="number" value="4"/>/4
+</label>
+<hr/>
+<label>
+    Copy as Pauses from track <input id="copy-from-track" type="number" value="1"/> to track <input id="copy-to-track"
+                                                                                                    type="number"
+                                                                                                    value="2"/>
+    <button id="submit-copy-track">Copy</button>
+</label><br/>
+<label>
+    Pitch<br/>
+    <select id="pitch">
+        <option value="f#">F♯</option>
+        <option value="g">G</option>
+        <option value="g#">G♯</option>
+        <option value="a">A</option>
+        <option value="a#">A♯</option>
+        <option value="b">B</option>
+        <option value="c">C</option>
+        <option value="c♯">C♯</option>
+        <option value="d">D</option>
+        <option value="d♯">D♯</option>
+        <option value="e">E</option>
+        <option value="f">F</option>
+        <option value="f♯+1">F♯ (+1 Octave)</option>
+    </select>
+</label><br/>
+<label>
+    Instrument<br/>
+    <select id="instrument">
+        <option value="bass">Double Bass</option>
+        <option value="snare">Snare Drum</option>
+        <option value="hat">Clicks and Sticks</option>
+        <option value="basedrum">Bass Drum</option>
+        <option value="bell">Bell (Glockenspiel)</option>
+        <option value="flute">Flute</option>
+        <option value="chime">Chime</option>
+        <option value="guitar">Guitar</option>
+        <option value="xylophone">Xylophone</option>
+        <option value="iron_xylophone">Iron Xylophone (Vibraphone)</option>
+        <option value="cow_bell">Cow Bell</option>
+        <option value="didgeridoo">Didgeridoo</option>
+        <option value="bit">"Bit" (Square wave)</option>
+        <option value="banjo">Banjo</option>
+        <option value="pling">"Pling" (Stronger harp)</option>
+        <option value="harp">Harp / piano</option>
+        <option value="pause">Pause</option>
+    </select>
+</label><br/>
+<label>
+    Octave<br/>
+    <select id="octave">
+        <option value="1">1</option>
+        <option value="2">2</option>
+    </select>
+</label><br/>
+Current Track<br/>
+<button id="previous-track">-</button>
+<label>
+    <input id="track" type="number" value="1"/>
+</label>
+<button id="next-track">+</button>
+<br/>
+<label>
+    Note<br/>
+    <select id="note">
+        <option value="1+1/2">1 1/2</option>
+        <option value="1">1</option>
+        <option value="3/4">3/4</option>
+        <option value="1/2">1/2</option>
+        <option value="3/8">3/8</option>
+        <option value="1/4">1/4</option>
+        <option value="3/16">3/16</option>
+        <option value="1/8">1/8</option>
+        <option value="3/32">3/32</option>
+        <option value="1/16">1/16</option>
+        <option value="3/64">3/64</option>
+        <option value="1/32">1/32</option>
+    </select>
+</label><br/>
+<button id="submit">Submit</button>
+<br/>
+<div id="result"></div>
+<script src="js/index.js"></script>
+</body>
+</html>

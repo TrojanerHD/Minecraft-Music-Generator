@@ -1,0 +1,20 @@
+{
+  "name": "musicgeneratormc",
+  "version": "1.0.0",
+  "description": "Generates music functions for Minecraft",
+  "main": "index.js",
+  "scripts": {
+    "run": "electron ."
+  },
+  "keywords": [
+    "minecraft",
+    "music",
+    "generator"
+  ],
+  "author": "Trojaner",
+  "license": "MIT",
+  "dependencies": {
+    "electron": "^5.0.4",
+    "jquery": "^3.4.1"
+  }
+}

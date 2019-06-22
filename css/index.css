@@ -1,0 +1,133 @@
+body {
+    background-color: #232323;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    margin-left: 10px;
+}
+
+
+button:disabled {
+    background-color: #071321;
+    cursor: unset;
+}
+
+button {
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    background-color: #4774a4;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    border: 2px #71a6f1 solid;
+    outline: none;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+button:active {
+    background-color: #24334b;
+}
+
+select, textarea, input {
+    margin-bottom: 10px;
+    outline: none;
+    background-color: #191919;
+    color: white;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    border: none;
+    padding: 5px;
+}
+
+textarea#result {
+    width: calc(100% - 5px);
+}
+
+
+/* Hide HTML5 Up and Down arrows. */
+input[type='number']::-webkit-outer-spin-button, input[type='number']::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type='number'] {
+    -moz-appearance: textfield;
+}
+
+/* The switch - the box around the slider */
+label.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+label.switch > input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* The slider */
+span.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #2196F3;
+
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+span.slider:before {
+    position: absolute;
+    content: '';
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:focus + span.slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + span.slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+/* Rounded sliders */
+span.slider.round {
+    border-radius: 34px;
+}
+
+span.slider.round:before {
+    border-radius: 50%;
+}
+
+button#save {
+    visibility: hidden;
+    -webkit-transition: background-color 75ms;
+    -moz-transition: background-color 75ms;
+    -o-transition: background-color 75ms;
+    transition: background-color 75ms;
+    margin: unset;
+    cursor: pointer;
+}
+
+button#save:disabled {
+    cursor: unset;
+}
+
+div#result > div {
+    display: inline;
+}
