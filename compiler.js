@@ -31,7 +31,7 @@ module.exports = (mainDirectory, result) => {
       const trackPath = path.join(directory, trackCount.toString())
       if (!fs.existsSync(trackPath)) fs.mkdirSync(trackPath)
       const bps = 60 / result['speed'] * parseInt(result['time-signature']) * eval(note['note'])
-      if (note['instrument'] !== 'pause')
+      if (note['instrument'] !== 'break')
         command += `execute as @a at @s run playsound minecraft:block.note_block.${note['instrument']} block @s ~ ~ ~ 1.0 ${pitchToDecimal(note['pitch'], note['octave'])}`
       if (noteCount === 0 && trackCount < lastTrack) command += `\nfunction ${path.basename(path.join(directory, '..', '..'))}:${path.basename(directory)}/${path.basename(path.join(trackPath, '..', (parseInt(path.basename(trackPath)) + 1).toString()))}/${'music'}`
       if (noteCount < max[count]) command += `\nschedule function ${path.basename(path.join(directory, '..', '..'))}:${path.basename(directory)}/${path.basename(trackPath)}/music${noteCount + 1 === 0 ? '' : noteCount + 1} ${bps}s`
