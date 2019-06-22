@@ -14,7 +14,8 @@ $(() => {
       pitch: $('select#pitch').val(),
       instrument: $('select#instrument').val(),
       octave: $('select#octave').val(),
-      note: $('select#note').val()
+      note: $('select#note').val(),
+      'same-beat': $('input#same-beat')[0].checked
     })
     updateResult()
   })
@@ -155,7 +156,7 @@ function updateResult (itShouldSave = true) {
   Object.keys(result['tracks']).forEach(trackArray => {
       let count = 0
       result['tracks'][trackArray].forEach(note => {
-        resultText += `<div>${note['instrument'] === 'pause' ? `Pause, Note: ${note['note']}` : `Track: ${[parseInt(trackArray)]}, Instrument: ${note['instrument']}, Octave: ${note['octave']}, Pitch: ${note['pitch'].toUpperCase()}, Note: ${note['note']}`}</div> <i class="fas fa-trash-alt" onclick="deleteEntry(${count}, parseInt(${trackArray}))"></i><br/>`
+        resultText += `<div>${note['instrument'] === 'pause' ? `Pause, Note: ${note['note']}` : `Track: ${[parseInt(trackArray)]}, Instrument: ${note['instrument']}, Octave: ${note['octave']}, Pitch: ${note['pitch'].toUpperCase()}, Note: ${note['note']}${note['same-beat'] ? ', Same Beat' : ''}`}</div> <i class="fas fa-trash-alt" onclick="deleteEntry(${count}, parseInt(${trackArray}))"></i><br/>`
         count++
       })
     }
