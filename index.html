@@ -42,7 +42,7 @@ Speed (BPM)<br/>
 </label>
 <hr/>
 <label>
-    Copy as Pauses from track <input id="copy-from-track" type="number" value="1"/> to track <input id="copy-to-track"
+    Copy as Breaks from Track <input id="copy-from-track" type="number" value="1"/> to track <input id="copy-to-track"
                                                                                                     type="number"
                                                                                                     value="2"/>
     <button id="submit-copy-track">Copy</button>
@@ -84,7 +84,7 @@ Speed (BPM)<br/>
         <option value="banjo">Banjo</option>
         <option value="pling">"Pling" (Stronger harp)</option>
         <option value="harp">Harp / piano</option>
-        <option value="pause">Pause</option>
+        <option value="break">Break</option>
     </select>
 </label><br/>
 <label>
@@ -117,6 +117,10 @@ Current Track<br/>
         <option value="3/64">3/64</option>
         <option value="1/32">1/32</option>
     </select>
+</label><br/>
+<label>
+    Same Beat<br/>
+    <input id="same-beat" type="checkbox"/>
 </label><br/>
 <button id="submit">Submit</button>
 <br/>

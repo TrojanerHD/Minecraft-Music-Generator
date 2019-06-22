@@ -15,23 +15,36 @@ module.exports = (mainDirectory, result) => {
   let trackCount = 1
   Object.keys(result['tracks']).forEach(count => {
     let noteCount = 0
+    let command = ''
+    let functionPath = ''
     result['tracks'][count].forEach(note => {
+      if (!note['same-beat'] && command !== '') {
+        fs.writeFile(functionPath, command, err => {
+          if (err) console.error(err)
+        })
+        command = ''
+      }
+      if (note['same-beat']) {
+        command += `\nexecute as @a at @s run playsound minecraft:block.note_block.${note['instrument']} block @s ~ ~ ~ 1.0 ${pitchToDecimal(note['pitch'], note['octave'])}`
+        return
+      }
       const trackPath = path.join(directory, trackCount.toString())
       if (!fs.existsSync(trackPath)) fs.mkdirSync(trackPath)
       const bps = 60 / result['speed'] * parseInt(result['time-signature']) * eval(note['note'])
-      let command
-      if (note['instrument'] === 'pause')
-        command = ''
-      else
-        command = `execute as @a at @s run playsound minecraft:block.note_block.${note['instrument']} block @s ~ ~ ~ 1.0 ${pitchToDecimal(note['pitch'], note['octave'])}`
+      if (note['instrument'] !== 'break')
+        command += `execute as @a at @s run playsound minecraft:block.note_block.${note['instrument']} block @s ~ ~ ~ 1.0 ${pitchToDecimal(note['pitch'], note['octave'])}`
       if (noteCount === 0 && trackCount < lastTrack) command += `\nfunction ${path.basename(path.join(directory, '..', '..'))}:${path.basename(directory)}/${path.basename(path.join(trackPath, '..', (parseInt(path.basename(trackPath)) + 1).toString()))}/${'music'}`
       if (noteCount < max[count]) command += `\nschedule function ${path.basename(path.join(directory, '..', '..'))}:${path.basename(directory)}/${path.basename(trackPath)}/music${noteCount + 1 === 0 ? '' : noteCount + 1} ${bps}s`
-      const functionPath = path.join(trackPath, `music${noteCount === 0 ? '' : noteCount}.mcfunction`)
+      functionPath = path.join(trackPath, `music${noteCount === 0 ? '' : noteCount}.mcfunction`)
+
+      noteCount++
+    })
+    if (command !== '') {
       fs.writeFile(functionPath, command, err => {
         if (err) console.error(err)
       })
-      noteCount++
-    })
+      command = ''
+    }
     trackCount++
   })
   return result
