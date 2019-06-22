@@ -34,6 +34,7 @@ Now you should see a window that looks similar to this photo:
 ![UI](https://raw.githubusercontent.com/TrojanerHD/Minecraft-Music-Generator/master/resources/README/UI.jpg)
 
 (Note: The UI may change during development so there might be small differences)
+
 Here is a quick overview for all the buttons:
 + Choose File: Here you are going to choose the `functions` folder of your datapack (`datapacks/<namespace>/data/<namespace>/functions`). This is necessary in order to save and compile the music you are creating.
 + Save directory: Currently it does nothing. Like I said: We are in alpha so do not expect everything to be working. Later this button saves the directory to quickly open it up on start of the application.
