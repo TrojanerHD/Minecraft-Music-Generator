@@ -105,7 +105,7 @@ $(() => {
   timeSignature.val(result['time-signature'])
   timeSignature.on({
     'change': () => {
-      if (parseInt(timeSignature.val()) > 1) timeSignature.val(1)
+      if (parseInt(timeSignature.val()) < 1) timeSignature.val(1)
       updateResult()
     }, 'keyup': () => {
       autoGrowWidth(timeSignature)
