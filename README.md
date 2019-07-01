@@ -37,7 +37,7 @@ Now you should see a window that looks similar to this photo:
 
 Here is a quick overview for all the buttons:
 + Choose File: Here you are going to choose the `functions` folder of your datapack (`datapacks/<namespace>/data/<namespace>/functions`). This is necessary in order to save and compile the music you are creating.
-+ Save directory: Currently it does nothing. Like I said: We are in alpha so do not expect everything to be working. Later this button saves the directory to quickly open it up on start of the application.
++ Save directory: Currently it does nothing. Like I said: We are in alpha so do not expect everything to be working. In the future, this button saves the directory to quickly open it up on start of the application.
 + Speed (BPM): The speed of your whole music composition in beats per minute
 + Save manually - Save automatically: This switch toggles whether to save automatically or manually. If you experience lags every time you change something in the application then you should consider turning auto save off.
 + Time Signature: This option specifies the time signature in which your composition is composed. 
@@ -61,4 +61,4 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 ## Authors
 * **Trojaner** - *Initial work* - [TrojanerHD](https://github.com/TrojanerHD)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/TrojanerHD/Minecraft-Music-Generator/contributors) who participated in this project.
