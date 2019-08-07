@@ -37,12 +37,13 @@ Now you should see a window that looks similar to this photo:
 
 Here is a quick overview for all the buttons:
 + Choose File: Here you are going to choose the `functions` folder of your datapack (`datapacks/<namespace>/data/<namespace>/functions`). This is necessary in order to save and compile the music you are creating.
-+ Save directory: Currently it does nothing. Like I said: We are in alpha so do not expect everything to be working. Later this button saves the directory to quickly open it up on start of the application.
++ Save directory: Currently it does nothing. Like I said: We are in alpha so do not expect everything to be working. In the future, this button saves the directory to quickly open it up on start of the application.
 + Speed (BPM): The speed of your whole music composition in beats per minute
 + Save manually - Save automatically: This switch toggles whether to save automatically or manually. If you experience lags every time you change something in the application then you should consider turning auto save off.
 + Time Signature: This option specifies the time signature in which your composition is composed. 
 + Pitch, Instrument, Octave, Current Track, Note, Submit: With this input fields and buttons you can add a new note. Pitch, instrument, octave and note (length) are self-explanatory. By "tracks" things like melody and bass are meant.
-+ Copy as Pauses from track x to track y: Here you can copy a track. You need to do this when a song first starts with one track (e. g. melody) and later another tracks are added (e. g. bass). An example case is "MEGALOVANIA" by Toby Fox. In this case you can not simply always add the longest pauses because Minecraft is not 100% precisely and unfortunately there is a difference between two 1/4 pauses and one 1/2 pause. So, you need to copy the tracks. It is planned that this function will be automated, but since a rewriting of the UI is planned, it is not yet worth it.
++ Copy as Breaks from Track x to track y: Here you can copy a track. You need to do this when a song first starts with one track (e. g. melody) and later another tracks are added (e. g. bass). An example case is "MEGALOVANIA" by Toby Fox. In this case you can not simply always add the longest pauses because Minecraft is not 100% precisely and unfortunately there is a difference between two 1/4 pauses and one 1/2 pause. So, you need to copy the tracks. It is planned that this function will be automated, but since a rewriting of the UI is planned, it is not yet worth it.
+
 And that is everything about the interface. The application compiles automatically on every save into the folder `functions/0` (if this folder already exists it will increase the number until there is no existing folder). Then, you can go into Minecraft, type `/reload` and execute the command `/function <namespace>:<compile folder>/1/music` to play the music.
 
 ## Built With
@@ -60,4 +61,4 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 ## Authors
 * **Trojaner** - *Initial work* - [TrojanerHD](https://github.com/TrojanerHD)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/TrojanerHD/Minecraft-Music-Generator/contributors) who participated in this project.
