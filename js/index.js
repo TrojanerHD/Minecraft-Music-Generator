@@ -1,6 +1,11 @@
 const { ipcRenderer } = require('electron')
 const $ = require('jquery')
-let result = { tracks: {}, 'auto-save': true, 'time-signature': '4' }
+let result = {
+  tracks: {},
+  'auto-save': true,
+  'time-signature': '4',
+  'track-names': {}
+}
 let currentTrack = 1
 let changes = false
 let currentPath
@@ -151,23 +156,47 @@ function autoGrowWidth (element) {
 }
 
 function updateResult (itShouldSave = true) {
-  const resultDiv = $('div#result')
-  let resultText = ''
+  const resultDiv = $('table#result > tbody')
+  resultDiv.html('')
   Object.keys(result['tracks']).forEach(trackArray => {
       let count = 0
       result['tracks'][trackArray].forEach(note => {
-        resultText += `<div>${note['instrument'] === 'break' ? `Break, Note: ${note['note']}, Track: ${parseInt(trackArray)}` : `Track: ${[parseInt(trackArray)]}, Instrument: ${note['instrument']}, Octave: ${note['octave']}, Pitch: ${note['pitch'].toUpperCase()}, Note: ${note['note']}${note['same-beat'] ? ', Same Beat' : ''}`}</div> <i class="fas fa-trash-alt" onclick="deleteEntry(${count}, parseInt(${trackArray}))"></i><br/>`
+        const noBreak = note['instrument'] !== 'break'
+        const innerResult = `
+<td colspan="${eval(note['note']) * 100}" class="${noBreak ? 'has-content' : ''}">
+    ${noBreak ? `<div class="note">${note['pitch']}${note['octave'] === '2' ? '+1' : ''}</div>
+    <div class="instrument">${note['instrument']}</div>` : ''}
+</td>`
+        const trackArrayTr = $(`tr.${trackArray}`)
+        if (!(trackArrayTr.length)) resultDiv.append(`<tr class="${trackArray}"><td class="headline">${trackArray in result['track-names'] ? result['track-names'][trackArray] : `Track ${trackArray}`}</td>${innerResult}</tr>`)
+        else trackArrayTr.append(innerResult)
         count++
       })
     }
   )
 
   result['time-signature'] = $('input#time-signature').val()
+  $('table#result > tbody > tr > td.headline').on('click', function () {
+    const headline = $(this)
+    if (headline.find('input').length === 0) {
+      $(this).html(`<input type="text" placeholder="${$(this).html()}"/>`)
+      headline.find('input').focus().on({
+        'focusout': function () {applyTrackNameChange($(this), headline)},
+        'keydown': function (e) {if (e.keyCode === 13) applyTrackNameChange($(this), headline)}
+      })
+    }
+  })
 
-  resultDiv.html(`${resultText}`)
   changes = true
   $('button#save').prop('disabled', '')
   if (itShouldSave) save()
+}
+
+function applyTrackNameChange (elem, headline) {
+  if (elem.val() !== '') {
+    headline.html(elem.val())
+    result['track-names'][headline.parent().attr('class')] = elem.val()
+  } else headline.html(elem.attr('placeholder'))
 }
 
 function updateTrack (trackInput) {
@@ -211,5 +240,6 @@ function deleteEntry (count, track) {
       if (result['tracks'][track].length === 0) delete result['tracks'][track]
     }
   })
+  result['deleted'] = true
   updateResult()
 }
