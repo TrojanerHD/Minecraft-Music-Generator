@@ -2,8 +2,8 @@ const fs = require('fs')
 const path = require('path')
 
 module.exports = (mainDirectory, result) => {
-  if (!('musicFolder' in result) || result['musicFolder'] === '') result['musicFolder'] = countFileUp(mainDirectory, 0)
-  let directory = result['musicFolder']
+  if (!('music-folder' in result) || result['music-folder'] === '') result['music-folder'] = countFileUp(mainDirectory, 0)
+  const directory = result['music-folder']
   if (!('tracks' in result)) return result
   // track: last note
   const max = {}

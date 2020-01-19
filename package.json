@@ -4,7 +4,8 @@
   "description": "Generates music functions for Minecraft",
   "main": "index.js",
   "scripts": {
-    "run": "electron ."
+    "run": "electron --inspect-brk=9229 ./src",
+    "compile": "tsc"
   },
   "keywords": [
     "minecraft",
@@ -15,6 +16,7 @@
   "license": "MIT",
   "dependencies": {
     "electron": "^5.0.4",
-    "jquery": "^3.4.1"
+    "jquery": "^3.4.1",
+    "lodash": "latest"
   }
 }

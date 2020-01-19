@@ -1,0 +1,5 @@
+node_modules/
+paths.json
+yarn.lock
+/src/*.js
+/src/*.js.map
