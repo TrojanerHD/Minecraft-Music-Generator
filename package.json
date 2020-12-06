@@ -17,6 +17,6 @@
   "dependencies": {
     "electron": "^5.0.4",
     "jquery": "^3.4.1",
-    "lodash": "latest"
+    "lodash": "^4.17.20"
   }
 }
